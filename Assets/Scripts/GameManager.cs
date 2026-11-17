@@ -6,14 +6,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public string firstLevel;
+    public string firstLevel = "1";
+    public string settings;
     
     public Button playButton;
+    public Button settingButton;
+    public GameObject SettingsUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        playButton = GetComponent<PlayButton>();
+        playButton = GetComponent<Button>();
+        settingButton = GetComponent<Button>();
+        
     }
 
     // Update is called once per frame
@@ -24,5 +29,20 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(firstLevel);
+    }
+
+    public void SettingsToggler()
+    {
+        if(SettingsUI.activeSelf == false)
+        {
+            SettingsUI.SetActive(true);
+        }
+    }
+   
+    public void QuitGame()
+    {
+        Debug.Log("QUIT!");
+        Application.Quit();
+       
     }
 }
